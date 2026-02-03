@@ -22,6 +22,8 @@ public class Cirkel extends Form {
         super(x, y);
         this.radie = radie;
         this.fylld = fylld;
+        color = new Color((int)(Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255) );
+
     }
   
     public int getArea() {
@@ -29,7 +31,7 @@ public class Cirkel extends Form {
     }
     @Override
     public void draw(Graphics g) {
-      g.setColor(Color.BLUE);
+      g.setColor(color);
       g.fillOval(Xposition, Yposition, radie, radie);
     }
     @Override
@@ -39,5 +41,4 @@ public class Cirkel extends Form {
    // Anropa metoden draw i en annan klass
    // Skriv rent av samma 2 kodrader i även triangel och rektangel
 }
-
 

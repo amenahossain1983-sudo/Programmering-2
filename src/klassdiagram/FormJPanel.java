@@ -131,11 +131,13 @@ public class FormJPanel extends javax.swing.JPanel {
     private void btnTriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriaActionPerformed
         int x = (int) (Math.random() * 301);
         int y = (int) (Math.random() * 301);
-        int b = (int) (Math.random() * 301);
-        int h = (int) (Math.random() * 301);
-        Form t = new Triangel(x, y, b, h, true);
+        int bas = (int) (Math.random() * 301);
+        int hojd = (int) (Math.random() * 301);
+        
+        Form t = new Triangel(x, y, bas, hojd, true);
         former.add(t);
         repaint();
+        
 
     }//GEN-LAST:event_btnTriaActionPerformed
 
@@ -155,9 +157,9 @@ public class FormJPanel extends javax.swing.JPanel {
         for (int i = 0; i < former.size(); i++) {
             former.get(i).draw(g);
         }
-
+        
+       
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCirkel;
     private javax.swing.JButton btnClear;

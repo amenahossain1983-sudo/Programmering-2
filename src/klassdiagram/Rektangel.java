@@ -23,6 +23,8 @@ public class Rektangel extends Form {
         super(x, y);
         this.bas = bas;
         this.hojd = hojd;
+        color = new Color((int)(Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255) );
+
     }
 
     public int getArea() {
@@ -30,7 +32,7 @@ public class Rektangel extends Form {
     }
     @Override
     public void draw(Graphics g) {
-    g.setColor(Color.RED);
+    g.setColor(color);
     g.fillRect(startX, startY, bas, hojd);
     }
     @Override
