@@ -19,6 +19,7 @@ public class Cirkel extends Form {
     private int startY;
     
     public Cirkel(int x, int y, int radie, boolean fylld) {
+        
         super(x, y);
         this.radie = radie;
         this.fylld = fylld;
