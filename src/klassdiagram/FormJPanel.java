@@ -38,6 +38,8 @@ public class FormJPanel extends javax.swing.JPanel {
         rbtnCirkel = new javax.swing.JRadioButton();
         rbtnRektangel = new javax.swing.JRadioButton();
         rbtnTriangel = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -62,6 +64,10 @@ public class FormJPanel extends javax.swing.JPanel {
         buttonGroup1.add(rbtnTriangel);
         rbtnTriangel.setText("Triangel");
 
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,6 +82,14 @@ public class FormJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(btnClear)
                 .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +101,11 @@ public class FormJPanel extends javax.swing.JPanel {
                         .addComponent(rbtnCirkel)
                         .addComponent(rbtnRektangel)
                         .addComponent(rbtnTriangel)))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(32, 32, 32)
+                .addComponent(jButton1)
+                .addGap(83, 83, 83))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -139,6 +157,8 @@ if(this.rbtnTriangel.isSelected()){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JRadioButton rbtnCirkel;
     private javax.swing.JRadioButton rbtnRektangel;
     private javax.swing.JRadioButton rbtnTriangel;
