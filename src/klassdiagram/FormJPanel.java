@@ -6,6 +6,7 @@ package klassdiagram;
  */
 import java.awt.Graphics;
 import java.util.ArrayList;
+import klassdiagram.Form;
 
 
 /**
@@ -32,36 +33,15 @@ public class FormJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        btnCirkel = new javax.swing.JButton();
-        btnTria = new javax.swing.JButton();
-        btnRekt = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         btnClear = new javax.swing.JButton();
+        rbtnCirkel = new javax.swing.JRadioButton();
+        rbtnRektangel = new javax.swing.JRadioButton();
+        rbtnTriangel = new javax.swing.JRadioButton();
 
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        btnCirkel.setText("cirkel");
-        btnCirkel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCirkelActionPerformed(evt);
-            }
-        });
-
-        btnTria.setText("Triangel");
-        btnTria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTriaActionPerformed(evt);
-            }
-        });
-
-        btnRekt.setText("Rektangel");
-        btnRekt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRektActionPerformed(evt);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
             }
         });
 
@@ -72,74 +52,44 @@ public class FormJPanel extends javax.swing.JPanel {
             }
         });
 
+        buttonGroup1.add(rbtnCirkel);
+        rbtnCirkel.setSelected(true);
+        rbtnCirkel.setText("Cirkel");
+
+        buttonGroup1.add(rbtnRektangel);
+        rbtnRektangel.setText("Rektangel");
+
+        buttonGroup1.add(rbtnTriangel);
+        rbtnTriangel.setText("Triangel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCirkel)
-                .addGap(34, 34, 34)
-                .addComponent(btnRekt)
-                .addGap(31, 31, 31)
-                .addComponent(btnTria)
                 .addGap(18, 18, 18)
+                .addComponent(rbtnCirkel)
+                .addGap(18, 18, 18)
+                .addComponent(rbtnRektangel)
+                .addGap(18, 18, 18)
+                .addComponent(rbtnTriangel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(btnClear)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCirkel)
-                    .addComponent(btnRekt)
-                    .addComponent(btnTria)
-                    .addComponent(btnClear))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnClear)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rbtnCirkel)
+                        .addComponent(rbtnRektangel)
+                        .addComponent(rbtnTriangel)))
                 .addContainerGap(271, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCirkelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCirkelActionPerformed
-        int x = (int) (Math.random() * 301);
-        int y = (int) (Math.random() * 301);
-        int r = (int) (Math.random() * 101);
-        Form C = new Cirkel(x, y, r, true);
-        former.add(C);
-        repaint();
-
-// TODO add your handling code here:
-        // skapa en cirkel och lägga den i en lista.
-        // anropa repaint se pdf-filen kapitel, blad 7
-    }//GEN-LAST:event_btnCirkelActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btnRektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRektActionPerformed
-        int x = (int) (Math.random() * 301);
-        int y = (int) (Math.random() * 301);
-        int b = (int) (Math.random() * 301);
-        int h = (int) (Math.random() * 301);
-        Form r = new Rektangel(x, y, b, h, true);
-        former.add(r);
-        repaint();
-
-    }//GEN-LAST:event_btnRektActionPerformed
-
-    private void btnTriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriaActionPerformed
-        int x = (int) (Math.random() * 301);
-        int y = (int) (Math.random() * 301);
-        int bas = (int) (Math.random() * 301);
-        int hojd = (int) (Math.random() * 301);
-        
-        Form t = new Triangel(x, y, bas, hojd, true);
-        former.add(t);
-        repaint();
-        
-
-    }//GEN-LAST:event_btnTriaActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
 
@@ -147,6 +97,32 @@ public class FormJPanel extends javax.swing.JPanel {
         repaint();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+    int x = evt.getX();
+    int y = evt.getY();
+        System.out.println("x:"+x);
+    int b = (int) (Math.random()*301)+5;
+    int h = (int) (Math.random()*301)+ 5;
+    
+if(this.rbtnTriangel.isSelected()){
+            Form t = new Triangel(x, y, b, h, true);
+            former.add(t);
+        }
+        else if(this.rbtnRektangel.isSelected()){
+            Form r = new Rektangel(x, y, b, h, true);
+            former.add(r);
+        }
+        else if(this.rbtnCirkel.isSelected()){
+            Form c = new Cirkel(x-(h/2), y-(h/2), h, true);
+            former.add(c);
+        }
+        repaint();
+    
+    
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
     // anropa draw metoden
     // Samt supperklassen med en bokstav
     // 
@@ -161,11 +137,11 @@ public class FormJPanel extends javax.swing.JPanel {
        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCirkel;
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnRekt;
-    private javax.swing.JButton btnTria;
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton rbtnCirkel;
+    private javax.swing.JRadioButton rbtnRektangel;
+    private javax.swing.JRadioButton rbtnTriangel;
     // End of variables declaration//GEN-END:variables
 }
 
