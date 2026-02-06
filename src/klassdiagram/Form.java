@@ -19,7 +19,7 @@ public abstract class Form {
     protected boolean running;
     protected boolean positivRiktning;
     protected Color color;
-
+   
     
     
     public Form(int x, int y) {

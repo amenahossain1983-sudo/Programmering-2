@@ -19,7 +19,7 @@ public class Rektangel extends Form {
     private int startX;
     private int startY;
     
-    public Rektangel(int x, int y, int hojd, int bas, boolean fylld) {
+    public Rektangel(int x, int y, int bas, int hojd, boolean fylld) {
         super(x, y);
         this.bas = bas;
         this.hojd = hojd;
@@ -33,7 +33,7 @@ public class Rektangel extends Form {
     @Override
     public void draw(Graphics g) {
     g.setColor(color);
-    g.fillRect(startX, startY, bas, hojd);
+    g.fillRect(Xposition, Yposition, bas, hojd);
     }
     @Override
     public String WhatAmI() {

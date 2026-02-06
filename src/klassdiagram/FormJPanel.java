@@ -64,9 +64,9 @@ public class FormJPanel extends javax.swing.JPanel {
         buttonGroup1.add(rbtnTriangel);
         rbtnTriangel.setText("Triangel");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Hämta");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Spara");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

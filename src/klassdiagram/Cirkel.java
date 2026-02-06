@@ -33,6 +33,7 @@ public class Cirkel extends Form {
     public void draw(Graphics g) {
       g.setColor(color);
       g.fillOval(Xposition, Yposition, radie, radie);
+      
     }
     @Override
     public String WhatAmI() {
