@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class FormJPanel extends javax.swing.JPanel {
 
     ArrayList<Form> former = new ArrayList<>();
-
+    FileManager fmgr = new FileManager();
     /**
      * Creates new form FormJPanel
      */
@@ -37,8 +37,8 @@ public class FormJPanel extends javax.swing.JPanel {
         rbtnCirkel = new javax.swing.JRadioButton();
         rbtnRektangel = new javax.swing.JRadioButton();
         rbtnTriangel = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnHamta = new javax.swing.JButton();
+        btnSpara = new javax.swing.JButton();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -63,15 +63,26 @@ public class FormJPanel extends javax.swing.JPanel {
         buttonGroup1.add(rbtnTriangel);
         rbtnTriangel.setText("Triangel");
 
-        jButton1.setText("Hämta");
+        btnHamta.setText("Hämta");
+        btnHamta.setBorderPainted(false);
+        btnHamta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHamtaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Spara");
+        btnSpara.setText("Spara");
+        btnSpara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSparaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(rbtnCirkel)
                 .addGap(18, 18, 18)
@@ -79,16 +90,11 @@ public class FormJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(rbtnTriangel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(btnClear)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHamta)
+                    .addComponent(btnSpara)
+                    .addComponent(btnClear))
                 .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,11 +106,11 @@ public class FormJPanel extends javax.swing.JPanel {
                         .addComponent(rbtnCirkel)
                         .addComponent(rbtnRektangel)
                         .addComponent(rbtnTriangel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addGap(83, 83, 83))
+                .addGap(18, 18, 18)
+                .addComponent(btnSpara)
+                .addGap(18, 18, 18)
+                .addComponent(btnHamta)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -114,7 +120,7 @@ public class FormJPanel extends javax.swing.JPanel {
         repaint();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnClearActionPerformed
-
+    
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
     int x = evt.getX();
     int y = evt.getY();
@@ -140,6 +146,16 @@ if(this.rbtnTriangel.isSelected()){
 
 // TODO add your handling code here:
     }//GEN-LAST:event_formMouseClicked
+
+    private void btnHamtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHamtaActionPerformed
+    former = fmgr.readFromFile();    
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnHamtaActionPerformed
+
+    private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
+    fmgr.saveToFile(former);    
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSparaActionPerformed
     // anropa draw metoden
     // Samt supperklassen med en bokstav
     // 
@@ -155,9 +171,9 @@ if(this.rbtnTriangel.isSelected()){
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnHamta;
+    private javax.swing.JButton btnSpara;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JRadioButton rbtnCirkel;
     private javax.swing.JRadioButton rbtnRektangel;
     private javax.swing.JRadioButton rbtnTriangel;
