@@ -6,7 +6,6 @@ package klassdiagram;
  */
 import java.awt.Graphics;
 import java.util.ArrayList;
-import klassdiagram.Form;
 
 
 /**

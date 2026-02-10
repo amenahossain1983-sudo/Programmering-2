@@ -34,7 +34,7 @@ public class Rektangel extends Form {
     @Override
     public void draw(Graphics g) {
     g.setColor(color);
-    g.fillRect(Xposition, Yposition, bas, hojd);
+    g.fillRect(Xposition-bas/2, Yposition-hojd/2, bas, hojd);
     }
     @Override
     public String WhatAmI() {

@@ -43,4 +43,3 @@ public class Cirkel extends Form {
    // Anropa metoden draw i en annan klass
    // Skriv rent av samma 2 kodrader i även triangel och rektangel
 }
-
