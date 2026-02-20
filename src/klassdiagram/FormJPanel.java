@@ -148,12 +148,14 @@ if(this.rbtnTriangel.isSelected()){
     }//GEN-LAST:event_formMouseClicked
 
     private void btnHamtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHamtaActionPerformed
-    former = fmgr.readFromFile();    
+    former = fmgr.readFromFile(); 
+    
 // TODO add your handling code here:
     }//GEN-LAST:event_btnHamtaActionPerformed
 
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
-    fmgr.saveToFile(former);    
+    fmgr.saveToFile(former);  
+    
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSparaActionPerformed
     // anropa draw metoden

@@ -7,21 +7,20 @@ package klassdiagram;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  *
  * @author afnka01
  */
-public abstract class Form {
+public abstract class Form implements Serializable{
 
     protected int Xposition;
     protected int Yposition;
     protected boolean running;
     protected boolean positivRiktning;
     protected Color color;
-   
-    
-    
+     
     public Form(int x, int y) {
       Xposition = x;
       Yposition = y;
@@ -45,4 +44,3 @@ public abstract class Form {
     public abstract void draw(Graphics g);
     public abstract String WhatAmI(); 
 }
-   // public abstract int getArea();
