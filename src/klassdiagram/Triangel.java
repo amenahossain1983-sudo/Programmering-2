@@ -32,11 +32,10 @@ int nHorn = 3;
 super(x,y);
 this.bas=bas;
 this.hojd=hojd;
+this.fylld=fylld;
         triangelArea = bas*hojd/2;
         color = new Color((int)(Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255) );
- 
     }
-    
     public int getArea() {
         return this.triangelArea;
     }
@@ -49,12 +48,9 @@ this.hojd=hojd;
         int[] yPoints = { Yposition + hojd/2, Yposition - hojd/2, Yposition + hojd/2 };
 
      g.setColor(color);
-     
      // Beräkna hörnorna - Utgå från att du vet ena hörnans kordinat
-     
      g.fillPolygon(xPoints, yPoints, nHorn);
     }
-    
     @Override
     public String WhatAmI() {
         return "Triangel";
