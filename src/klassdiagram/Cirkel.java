@@ -27,8 +27,7 @@ public class Cirkel extends Form {
 
     }
   
-    public int getArea() {
-        return 0;
+ 
     }
     @Override
     public void draw(Graphics g) {
@@ -40,6 +39,11 @@ public class Cirkel extends Form {
     public String WhatAmI() {
         return "Cirkel";
     }
+
+@Override
+public double getArea() {
+return (radie*radie)* Math.PI;
+
    // Anropa metoden draw i en annan klass
    // Skriv rent av samma 2 kodrader i även triangel och rektangel
 }
