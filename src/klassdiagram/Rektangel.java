@@ -16,7 +16,7 @@ public class Rektangel extends Form {
 
     private int bas;
     private int hojd;
-    private boolean fylld;
+    private boolean fylld; 
     private int startX;
     private int startY;
     
@@ -40,4 +40,5 @@ public class Rektangel extends Form {
     public String WhatAmI() {
         return "Rektangel";
     }
+
 }
