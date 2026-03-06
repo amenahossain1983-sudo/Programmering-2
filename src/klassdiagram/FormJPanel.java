@@ -12,13 +12,17 @@ import java.util.ArrayList;
  *
  * @author afnka01
  */
-public class FormJPanel extends javax.swing.JPanel {
-
+public class FormJPanel extends javax.swing.JPanel implements Runnable{
+    
+}
     ArrayList<Form> former = new ArrayList<>();
     FileManager fmgr = new FileManager();
     /**
      * Creates new form FormJPanel
      */
+    boolean Animering = true;
+    private volatile Thread trad;
+    boolean running = false;
     public FormJPanel() {
         initComponents();
     }
@@ -115,7 +119,6 @@ public class FormJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-
         this.former.clear();
         repaint();
 // TODO add your handling code here:
@@ -150,6 +153,7 @@ if(this.rbtnTriangel.isSelected()){
     private void btnHamtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHamtaActionPerformed
     former = fmgr.readFromFile(); 
     
+    
 // TODO add your handling code here:
     }//GEN-LAST:event_btnHamtaActionPerformed
 
@@ -161,16 +165,63 @@ if(this.rbtnTriangel.isSelected()){
     // anropa draw metoden
     // Samt supperklassen med en bokstav
     // 
+        private void tbtnAnimeringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnAnimeringActionPerformed
+        if (Animering) {
+            tbtnAnimering.setText("Stop");
+            start();
+            Animering = false;
+        } else {
+            tbtnAnimering.setText("Start");
+            stop();
+            Animering = true;
+        }
+       
+        for (int i = 0; i < Former.size(); i++) {
+            Former.get(i).setRunning(running);
+        }
+        repaint();
 
-    @Override
+}
+
+   @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (int i = 0; i < former.size(); i++) {
-            former.get(i).draw(g);
+        for (int i = 0; i < Former.size(); i++) {
+            int b =this.getWidth();
+            Former.get(i).setWidth(b);
+            Former.get(i).draw(g);
         }
-        
-       
+     
     }
+    private void start() {
+        if (trad == null) {
+            trad = new Thread(this);
+            trad.start();
+            this.running = true;
+        }
+    }
+
+    private void stop() {
+        if (trad != null) {
+            this.running = false;
+            trad = null;
+        }
+    }
+
+    @Override
+    public void run() {
+        Thread thisThread = Thread.currentThread();
+        while (trad == thisThread) {
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+            }
+            repaint();
+        }
+    }
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnHamta;
@@ -180,5 +231,9 @@ if(this.rbtnTriangel.isSelected()){
     private javax.swing.JRadioButton rbtnRektangel;
     private javax.swing.JRadioButton rbtnTriangel;
     // End of variables declaration//GEN-END:variables
-}
+
+
+
+
+
 
