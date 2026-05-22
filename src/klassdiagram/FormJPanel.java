@@ -1,9 +1,10 @@
-package klassdiagram;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+package klassdiagram;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 public class FormJPanel extends javax.swing.JPanel implements Runnable{
     
-}
+
     ArrayList<Form> former = new ArrayList<>();
     FileManager fmgr = new FileManager();
     /**
@@ -43,6 +44,7 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable{
         rbtnTriangel = new javax.swing.JRadioButton();
         btnHamta = new javax.swing.JButton();
         btnSpara = new javax.swing.JButton();
+        tbtnAnimering = new javax.swing.JButton();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -82,6 +84,13 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable{
             }
         });
 
+        tbtnAnimering.setText("Start");
+        tbtnAnimering.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtnAnimeringActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,10 +104,15 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable{
                 .addComponent(rbtnTriangel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHamta)
-                    .addComponent(btnSpara)
-                    .addComponent(btnClear))
-                .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tbtnAnimering, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnHamta)
+                            .addComponent(btnSpara)
+                            .addComponent(btnClear))
+                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +128,9 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable{
                 .addComponent(btnSpara)
                 .addGap(18, 18, 18)
                 .addComponent(btnHamta)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tbtnAnimering)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,11 +178,9 @@ if(this.rbtnTriangel.isSelected()){
     
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSparaActionPerformed
-    // anropa draw metoden
-    // Samt supperklassen med en bokstav
-    // 
-        private void tbtnAnimeringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnAnimeringActionPerformed
-        if (Animering) {
+
+    private void tbtnAnimeringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnAnimeringActionPerformed
+       if (Animering) {
             tbtnAnimering.setText("Stop");
             start();
             Animering = false;
@@ -176,20 +190,19 @@ if(this.rbtnTriangel.isSelected()){
             Animering = true;
         }
        
-        for (int i = 0; i < Former.size(); i++) {
-            Former.get(i).setRunning(running);
+        for (int i = 0; i < former.size(); i++) {
+            former.get(i).setRunning(running);
         }
         repaint();
-
-}
+    }//GEN-LAST:event_tbtnAnimeringActionPerformed
 
    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (int i = 0; i < Former.size(); i++) {
+        for (int i = 0; i < former.size(); i++) {
             int b =this.getWidth();
-            Former.get(i).setWidth(b);
-            Former.get(i).draw(g);
+            former.get(i).setWidth(b);
+            former.get(i).draw(g);
         }
      
     }
@@ -230,10 +243,11 @@ if(this.rbtnTriangel.isSelected()){
     private javax.swing.JRadioButton rbtnCirkel;
     private javax.swing.JRadioButton rbtnRektangel;
     private javax.swing.JRadioButton rbtnTriangel;
+    private javax.swing.JButton tbtnAnimering;
     // End of variables declaration//GEN-END:variables
 
 
 
-
+}
 
 

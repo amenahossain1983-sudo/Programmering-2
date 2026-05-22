@@ -28,7 +28,7 @@ public class Cirkel extends Form {
     }
   
  
-    }
+    
     @Override
     public void draw(Graphics g) {
       g.setColor(color);
@@ -46,4 +46,4 @@ return (radie*radie)* Math.PI;
 
    // Anropa metoden draw i en annan klass
    // Skriv rent av samma 2 kodrader i även triangel och rektangel
-}
+}}
