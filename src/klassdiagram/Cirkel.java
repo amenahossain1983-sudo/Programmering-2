@@ -31,6 +31,8 @@ public class Cirkel extends Form {
     
     @Override
     public void draw(Graphics g) {
+        if(running)
+            movE(0,0);
       g.setColor(color);
       g.fillOval(Xposition, Yposition, radie, radie);
       

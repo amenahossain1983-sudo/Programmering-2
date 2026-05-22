@@ -34,6 +34,8 @@ public class Rektangel extends Form {
 
     @Override
     public void draw(Graphics g) {
+        if(running)
+            movE(0,0);
         g.setColor(color);
         g.fillRect(Xposition - bas / 2, Yposition - hojd / 2, bas, hojd);
     }

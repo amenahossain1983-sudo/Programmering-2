@@ -13,56 +13,60 @@ import java.io.Serializable;
  *
  * @author afnka01
  */
-public abstract class Form implements Serializable{
+public abstract class Form implements Serializable {
 
     protected int Xposition;
     protected int Yposition;
-    protected boolean running;
+    protected boolean running = false;
     protected boolean positivRiktning;
     protected Color color;
     protected boolean Höger = true;
     protected int width;
-    
-     
+
     public Form(int x, int y) {
-      Xposition = x;
-      Yposition = y;
-    color = new Color((int)(Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255) );
-    
+        Xposition = x;
+        Yposition = y;
+        color = new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255));
+
     }
+
     public int getXpos(int Xposition) {
         return Xposition;
     }
+
     public int getYpos(int Yposition) {
         return Yposition;
-    } 
+    }
+
     public Point getPos(Point pos) {
         return new Point(Xposition, Yposition);
     }
-    public void setRunning( boolean run) {
-        this.running= run;
-    }
-    public void setWidth( int w) {
-        this.width= w;
-    }   
-    public void movE(int x, int y) {
 
-        if(Höger) {
-    Xposition+=5;
-    if(Xposition>width) {
-        Höger=false;
-    }else {
-        Xposition-=5;
-        if(Xposition<000) {
-            Höger=true;
+    public void setRunning(boolean run) {
+        this.running = run;
+    }
+
+    public void setWidth(int w) {
+        this.width = w;
+    }
+
+    public void movE(int x, int y) {
+        if (Höger) {
+            Xposition += 5;
+            if (Xposition > width) {
+                Höger = false;
+            } else {
+                Xposition -= 5;
+                if (Xposition < 000) {
+                    Höger = true;
+                }
+            }
         }
     }
-}
-    }
-    
+
     public abstract void draw(Graphics g);
-    
-    public abstract String WhatAmI(); 
-    
+
+    public abstract String WhatAmI();
+
     public abstract double getArea();
 }

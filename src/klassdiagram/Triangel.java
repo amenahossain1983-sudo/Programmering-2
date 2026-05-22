@@ -42,8 +42,8 @@ int nHorn = 3;
 
     @Override
     public void draw(Graphics g) {
-        //int[] xPoints = { Xposition, 100, 150};
-        //int[] yPoints = { Yposition, 100, 50};
+       if(running)
+            movE(0,0);
         int nHorn = 3;
         int[] xPoints = {Xposition - bas / 2, Xposition, Xposition + bas / 2};
         int[] yPoints = {Yposition + hojd / 2, Yposition - hojd / 2, Yposition + hojd / 2};

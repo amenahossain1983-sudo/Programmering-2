@@ -1,20 +1,17 @@
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package klassdiagram;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
-
 
 /**
  *
  * @author afnka01
  */
-public class FormJPanel extends javax.swing.JPanel implements Runnable{
-    
+public class FormJPanel extends javax.swing.JPanel implements Runnable {
 
     ArrayList<Form> former = new ArrayList<>();
     FileManager fmgr = new FileManager();
@@ -24,6 +21,7 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable{
     boolean Animering = true;
     private volatile Thread trad;
     boolean running = false;
+
     public FormJPanel() {
         initComponents();
     }
@@ -139,48 +137,43 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable{
         repaint();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnClearActionPerformed
-    
+
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-    int x = evt.getX();
-    int y = evt.getY();
-        System.out.println("x:"+x);
-    int b = (int) (Math.random()*301)+5;
-    int h = (int) (Math.random()*301)+ 5;
-    
-if(this.rbtnTriangel.isSelected()){
+        int x = evt.getX();
+        int y = evt.getY();
+
+        int b = (int) (Math.random() * 301) + 5;
+        int h = (int) (Math.random() * 301) + 5;
+
+        if (this.rbtnTriangel.isSelected()) {
             Form t = new Triangel(x, y, b, h, true);
             former.add(t);
-        }
-        else if(this.rbtnRektangel.isSelected()){
+        } else if (this.rbtnRektangel.isSelected()) {
             Form r = new Rektangel(x, y, b, h, true);
             former.add(r);
-        }
-        else if(this.rbtnCirkel.isSelected()){
-            Form c = new Cirkel(x-(h/2), y-(h/2), h, true);
+        } else if (this.rbtnCirkel.isSelected()) {
+            Form c = new Cirkel(x - (h / 2), y - (h / 2), h, true);
             former.add(c);
         }
         repaint();
-    
-    
 
 // TODO add your handling code here:
     }//GEN-LAST:event_formMouseClicked
 
     private void btnHamtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHamtaActionPerformed
-    former = fmgr.readFromFile(); 
-    
-    
+        former = fmgr.readFromFile();
+repaint();
 // TODO add your handling code here:
     }//GEN-LAST:event_btnHamtaActionPerformed
 
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
-    fmgr.saveToFile(former);  
-    
+        fmgr.saveToFile(former);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSparaActionPerformed
 
     private void tbtnAnimeringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnAnimeringActionPerformed
-       if (Animering) {
+        if (Animering) {
             tbtnAnimering.setText("Stop");
             start();
             Animering = false;
@@ -189,23 +182,24 @@ if(this.rbtnTriangel.isSelected()){
             stop();
             Animering = true;
         }
-       
+
         for (int i = 0; i < former.size(); i++) {
             former.get(i).setRunning(running);
         }
         repaint();
     }//GEN-LAST:event_tbtnAnimeringActionPerformed
 
-   @Override
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i = 0; i < former.size(); i++) {
-            int b =this.getWidth();
+            int b = this.getWidth();
             former.get(i).setWidth(b);
             former.get(i).draw(g);
         }
-     
+
     }
+
     private void start() {
         if (trad == null) {
             trad = new Thread(this);
@@ -234,7 +228,6 @@ if(this.rbtnTriangel.isSelected()){
     }
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnHamta;
@@ -246,8 +239,4 @@ if(this.rbtnTriangel.isSelected()){
     private javax.swing.JButton tbtnAnimering;
     // End of variables declaration//GEN-END:variables
 
-
-
 }
-
-
