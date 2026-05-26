@@ -18,8 +18,8 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable {
     /**
      * Creates new form FormJPanel
      */
-    boolean Animering = true;
-    private volatile Thread trad;
+    boolean Animering = false;
+    private volatile Thread trad=null;
     boolean running = false;
 
     public FormJPanel() {
@@ -135,7 +135,7 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         this.former.clear();
         repaint();
-// TODO add your handling code here:
+// 
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -157,13 +157,17 @@ public class FormJPanel extends javax.swing.JPanel implements Runnable {
         }
         repaint();
 
-// TODO add your handling code here:
+// Från och med rad 13 - > rad 158 kod kommentar : 
+// Just den här delen av koden, är grunden för fönsterpanelen där vi sparar en lista av geometriska former 
+// och inititerar knappar och radioknappar. När användaren klickar med musen på panelen registreras koordinaterna
+// och slumpmässiga värden för bredd och höjd skapas. Beroende på vilken radioknapp som är aktiv skapas ett specifikt 
+// formobjekt som läggs till i listan "former". Därefter i slutet, anropas metoden repaint för att rita ut den nyskapade former direkt på skärmen
     }//GEN-LAST:event_formMouseClicked
 
     private void btnHamtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHamtaActionPerformed
         former = fmgr.readFromFile();
 repaint();
-// TODO add your handling code here:
+// 
     }//GEN-LAST:event_btnHamtaActionPerformed
 
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
@@ -175,20 +179,24 @@ repaint();
     private void tbtnAnimeringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnAnimeringActionPerformed
         if (Animering) {
             tbtnAnimering.setText("Stop");
-            start();
+            stop();
             Animering = false;
         } else {
             tbtnAnimering.setText("Start");
-            stop();
+            start();
             Animering = true;
         }
-
         for (int i = 0; i < former.size(); i++) {
-            former.get(i).setRunning(running);
+            former.get(i).setRunning(Animering);
         }
         repaint();
     }//GEN-LAST:event_tbtnAnimeringActionPerformed
-
+// Från och med rad 167 till rad 192 kodkommentar : 
+    // Här så hanterar vi funktionerna för att spara eller hämta figurerna från en fil mha filhaneraren fmgr.
+    // Därmed finns också logiken för start- och stoppknappen som sätter igång eller pausar animeringen och 
+    // ändrar knappens text. När animeringen ändras loopen koden igenom alla sparade former och uppdetarar
+    // deras interna status så att de vet om de ska röra sig eller stå stilla.
+    // I slutet, hittar vi paoinComponent, vilet är den metod som ritar ut alla former på panelen och uppdatterar deras bredd. 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -226,7 +234,11 @@ repaint();
             repaint();
         }
     }
-
+// Kod kommentar från Rad 201 - > 234
+    // Till sist men lite minst, sköter programmets tråd, vilket fungerar som en seperat motor som driver själva animationen i bakgrunden. 
+    // Metoderna start() och stop() kontrollerar om denna tråd ska skapas eller stängas av när användaren klickar på startknappen. I run() metoden
+    // snurrar en loop som pausar i 30 ms före varje gång den tvingar skärmen att ritas om via repaint(). Längst ner i koden dskapas de visual komponeterna som 
+    // som NetBeans användaren för att hålla reda på knappar och val.
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
