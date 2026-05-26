@@ -52,17 +52,29 @@ public abstract class Form implements Serializable {
 
     public void movE(int x, int y) {
         if (Höger) {
-            Xposition += 5;
-            if (Xposition > width) {
-                Höger = false;
-            } else {
-                Xposition -= 5;
-                if (Xposition < 000) {
-                    Höger = true;
-                }
-            }
+         Xposition += 5;
+         if (Xposition > width ) {
+             Höger=false;
+             
+         }
+        } else {
+            Xposition-=5;
+        }
+        if (Xposition<0) {
+            Höger=true;
         }
     }
+            // System.out.println("move "+Xposition);
+            // if (Xposition > width) {
+            //    Höger = false;
+            // } else {
+            //    Xposition -= 5;
+            //    if (Xposition < 000) {
+            //        Höger = true;
+             //   }
+           // }
+       // }
+   // }
 
     public abstract void draw(Graphics g);
 
